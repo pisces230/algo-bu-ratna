@@ -1,0 +1,35 @@
+@author: 62822
+
+""""""
+Nama : Tegar
+Nim  : 064002100023
+"""
+
+print("Tugas puisi algo bu ratna :)")
+
+judul = str(input("masukkan judul pusis: "))
+filename = (("%s.")%(judul))
+f = open(filename, "w")
+f.write(judul)
+f.write("\n\n")
+print(("file %s dibuat! ")%(filename))
+
+for i in range(100):
+    print()
+    
+print('ketik "exit" untuk keluar! ')
+print(judul, "\n")
+
+baris = True 
+nomor = 0
+while baris == True:
+    nomor += 1; num = str(nomor)
+    penomoran = str(("%s  ")%(num))
+    isi = str(input(penomoran))
+    if isi == "exit":
+        print("\nDisimpan. Terimakasih!")
+        baris = False
+    else:
+        f.write(isi)
+        f.write("\n")
+f.close()
