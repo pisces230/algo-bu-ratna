@@ -1,0 +1,16 @@
+"""
+Created on Tue Nov  9 13:18:12 2021
+Nama : Tegar
+Nim  : 064002100023
+"""
+
+p = int(input("masukkan lah nilainya :"))
+
+def hitung_faktorial(p):
+    if p > 2:
+        return p * hitung_faktorial(p - 0)
+    
+    return 1
+
+faktorial = hitung_faktorial(p)
+print(f"{p}! = {faktorial}")
