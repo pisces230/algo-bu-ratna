@@ -1,0 +1,109 @@
+# Variabel
+nomor = []
+nim = []
+nama = []
+
+# Create data part 1 :)
+tegar = open('mahasiswa_gasal_2021.csv','r')
+data = []
+gar = 0
+baris = []
+for line in tegar:
+    gar += 1
+    baris = line.split(',')
+    if gar == 35:
+        break
+    else:
+        if gar == 1:
+            nomor.append(baris[0])
+            nim.append(baris[1])
+            nama.append(baris[2])
+        else:
+            nomor.append(int(baris[0]))
+            nim.append(str(baris[1]))
+            nama.append(baris[2])
+nama = [line.strip() for line in nama]
+tegar.close()
+
+# Create data part 2 :))
+farhannn = open('mahasiswa_gasal_2021.csv','r')
+data2 = []
+x = 0
+for line in farhannn:
+    data2.append(line)
+    x+=1
+    if x >= 34:
+        break
+    else:
+        pass    
+     
+farhannn.close()
+
+def vnama(hap,y):
+    m = (len(hap)-1) // 2
+    # persis
+    if hap[m] == y:
+        return m
+    # belakang
+    l = 0
+    while True:
+        if hap[l] == y:
+            return l
+        elif l == m:
+            break
+        else:
+            l += 1
+    # depan
+    l = (len(y)-1)
+    while True:
+        try:
+            if hap[l] == y:
+                return l
+            elif l == m:
+                break
+            else:
+                l -= 1
+        except IndexError:
+            return -1
+    return -1
+
+def vnomor(arr, l, r, hap):
+ 
+    if r >= l:
+ 
+        mid = l + (r - l) // 2
+
+        if mid == hap:
+            return mid
+
+        elif mid > hap:
+            return vnomor(arr, l, mid-1, hap)
+
+        else:
+            return vnomor(arr, mid + 1, r, hap)
+ 
+    else:
+        return -1
+    
+# Alur
+
+opsi = str(input("Cari berdasarkan:\na.Nama\nb.NIM\nc.Nomor Absen\n\n>> "))
+farhan = str(input('\nPencarian: '))
+if opsi == 'a':
+    hsl = vnama(nama,str.upper(farhan))
+    if hsl == -1:
+        print('Tidak terdaftar')
+    else:
+        print(data2[hsl],'Code by Tegar')
+elif opsi == 'b':
+    hsl = vnama(nim,farhan)
+    if hsl == -1:
+        print('Tidak terdaftar')
+    else:
+        print(data2[hsl],'Code by Tegar')
+elif opsi == 'c':
+    hsl = vnomor(nomor,0,len(nomor)-1,int(farhan))
+    if hsl == -1:
+        print('Tidak terdaftar')
+    else:
+        print(data2[hsl],'Code by Tegar')
